@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link active" href="portada.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+            <li class="nav-item">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="usuarioId" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <a class="dropdown-item" href="cart.html">Mi carrito</a>
+                  <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+                  <a class="dropdown-item" href="index.html" onclick="borrarUsuario()">Cerrar sesión</a>
+                </ul>
+              </div>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main id="main">
+    <div class="container" p-5 backColor>
+      <br>
+      <h1 class="titleCenter">Carrito</h1>
+      <div class="articulos">
+        <br>
+        <h4>Artículos a comprar</h4><br>
+        <div class="row">
+              <div class="col">
+                <p></p>
+              </div>
+              <div class="col">
+                <p><b>Nombre</b></p>
+              </div>
+              <div class="col">
+                <p><b>Costo</b></p>
+              </div>
+              <div class="col">
+                <p><b>Cantidad</b></p>
+              </div>
+              <div class="col">
+                <p><b>Subtotal</b></p>
+              </div>
+              <hr>
+        </div>
+            
+        <div>
+          <!-- entrega 6: donde se muestran los articulos -->
+          <div class="row" id="carrito-list-container">
+           
+
+            </div>
+            <hr>
+        <br>
+        <br>
+      </div>
+      
+      <!-- //entrega 6: -->
+      <form class="row g-3 needs-validation" novalidate>
+        
+      <div class="tipoenvio">
+        <h4>Tipo de envío</h4>
+        <input type="radio" id="premium" name="valor" checked value="15">
+        <label for="premium"> Premium 2 a 5 días (15%)</label><br>
+        <input type="radio" id="express" name="valor" required value="7">
+        <label for="express"> Express 5 a 8 días (7%)</label><br>
+        <input type="radio" id="estandar" name="valor" value="5">
+        <label for="estandar"> Estandar 12 a 15 días (5%)</label><br>
+        <br>
+      </div>
+      <div class="direccionEnvio">
+        <div class="form-group">
+
+       
+            <h4>Dirección</h4>
+            <div class="col-md-6">
+            <!-- //entrega 6: -->
+              <label for="validationCustom03" class="form-label">Calle</label>
+              <input type="text" class="form-control" id="validationCustom03" required>
+              <div class="invalid-feedback">
+                Ingresa una calle.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom03" class="form-label">Número</label>
+              <input type="text" class="form-control" id="validationCustom03" required>
+              <div class="invalid-feedback">
+                Ingresa un número.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom03" class="form-label">Esquina</label>
+              <input type="text" class="form-control" id="validationCustom03" required>
+              <br>
+              <div class="invalid-feedback">
+                Ingresa una esquina.
+
+              </div>
+            </div>
+          
+
+        </div>
+
+      </div>
+      <br>
+      <br>
+      
+      <hr>
+      <h4>Costos</h4>
+      <br>
+      <table>
+      <table class="table table-sm">
+        <tbody>
+          <tr>
+           <!-- //entrega 6: -->
+
+            <td scope="row">Subtotal</td>
+            <td class="text-end"><span>USD </span><span id="subtotal">0</span></td>
+
+          </tr>
+          <tr>
+            <td scope="row">Costo envío</td>
+            <td class="text-end"><span>USD </span><span id="costo_envio">0</span></td>
+
+          </tr>
+          <tr>
+            <td scope="row">Costo total</td>
+            <td class="text-end"><b><span>USD </span><span id="costo_total">0</span></b></td>
+          </tr>
+        </tbody>
+
+      </table>
+      <br>
+      <br>
+
+      <h4>Forma de pago</h4><br>
+      <!-- //entrega 6: -->
+      <!-- boton Modal -->  
+    <div>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Seleccionar
+      </button>
+      <div class="invalid-feedback" id="feedback_modal">
+        No has seleccionado nada.
+      </div>
+    </div>
+      
+      <!-- Modal --><!-- //entrega 6: -->
+<div class="was-validated">
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Forma de pago</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <input class="form-check-input" type="radio" name="flexRadioDefault" value="1" id="tarjeta" checked onclick="metodoPago()">
+                <label class="form-check-label" for="tarjeta">
+                  Tarjeta de crédito
+                </label>
+                <hr>
+                <div class="row g-3 align-items-center">
+                  <div class="col-auto">
+                <label for="num_tarjeta" class="form-label">Número de tarjeta</label>
+                <input class="form-control" id="num_tarjeta" aria-describedby="emailHelp" value="">
+              </div>
+                <div class="col-auto">
+                 <label for="codigo" class="form-label">Código de seg.</label>
+                <input class="form-control" id="codigo" aria-describedby="emailHelp" value="">
+              </div>
+            </div>
+                <br>
+                <label for="vencimiento" class="form-label">Vencimiento (MM/AA)</label>
+                <input class="form-control" id="vencimiento" aria-describedby="emailHelp" value="">
+      <hr>
+      <input class="form-check-input" type="radio" name="flexRadioDefault" value="2" id="transferencia" onclick="metodoPago()">
+                <label class="form-check-label" for="transferencia">
+                  Transferencia bancaria
+                </label>
+                <hr>
+                <br>
+                <label for="nro_cuenta" class="form-label">Número de cuenta</label>
+                <input class="form-control" id="nro_cuenta" aria-describedby="emailHelp" value="">
+      </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="metodoPago()">Cerrar</button>
+            </div>
+          </div>    
+ 
+    </div>
+  </div>
+</div>
+<div class="col-12">
+  <button class="btn btn-primary" id="botonFinalizarCompra" type="submit" onclick="validacion()">Finalizar compra</button>
+</div>
+</form>
+    <br>
+
+  </main>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+        2022</p>
+      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+
+</html>
