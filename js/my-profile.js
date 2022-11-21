@@ -1,107 +1,102 @@
-// aca llamamos a todas las variables donde iran los datos del usuario
+//Campos donde iran los datos del usuario.
+let primerNombre=document.getElementById("primerNombre");
+let segundoNombre=document.getElementById("segundoNombre");
+let primerApellido=document.getElementById("primerApellido");
+let segundoApellido=document.getElementById("segundoApellido");
+let telefono=document.getElementById("telefono");
+let imgPerfil=document.getElementById("imgPerfil");
+let imgFoto=document.getElementById("imgFoto");
 
-let pnombre = document.getElementById("primernombre");
-let snombre = document.getElementById("segundonombre");
-let papellido = document.getElementById("primerapellido");
-let sapellido = document.getElementById("segundonombre");
-let email = document.getElementById("email");
-let tel = document.getElementById("telefonocontacto");
-let foto = document.getElementById("imgPerfil");
 
+//funcion para leer la foto de perfil que ingresamos (codifica la imagen en base 64 para almacenar la imagen en el localstorage)
 
-function ponerFoto(){
-  let file = new FileReader();
-  file.readAsDataURL(imagenPerfil.files[0]);
-  file.onload = () => {
-       let urlFoto = file.result;
+function cargarFoto() {
+    let file = new FileReader();
+    file.readAsDataURL(imgPerfil.files[0]);
+    file.onload = () => {
+         let URLFOTO = file.result;
 
-       localStorage.setItem("foto", urlFoto);
+         localStorage.setItem("foto", URLFOTO);
 
          window.location.reload();
-}
-}
-
-function datos(){
-  let primerNombre = document.getElementById("primernombre").value;
-  let segundoNombre = document.getElementById("segundonombre").value;
-  let primerApellido = document.getElementById("primerapellido").value;
-  let segundoApellido = document.getElementById("segundoapellido").value;
-  let emailUsuario = document.getElementById("email").value;
-  let telefono = document.getElementById("telefonocontacto").value;
-
-//local storage
-
-localStorage.setItem("primernombre", primernombre);
-localStorage.setItem("segundonombre", segundonombre);
-localStorage.setItem("primerapellido", primerapellido);
-localStorage.setItem("segundoapellido", segundoapellido);
-localStorage.setItem("emailUsuario", emailUsuario);
-localStorage.setItem("telefono", telefono);
-}
-
-function validacion(){
-  'use strict'
-
-  var forms = document.querySelectorAll('.needs-validation')
+    };
+};
 
 
-  Array.prototype.slice.call(forms).forEach(form => {
-       
-       form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                 event.preventDefault()
-                 event.stopPropagation()
-            }else{
-              datos();
-            }
-            form.classList.add('was-validated')
-       }, false)
-  })
+//Funcion para gurdar datos en localstorage.
+function guardarDatos(){
+    //Esto nos permite leer el valor del campo.
+    let primerN=document.getElementById("primerNombre").value; 
+    let segundoN=document.getElementById("segundoNombre").value;
+    let primerA=document.getElementById("primerApellido").value;
+    let segundoA=document.getElementById("segundoApellido").value;
+    let tel=document.getElementById("telefono").value;
+
+//Esto guarda los datos en el localstorage
+localStorage.setItem("primerN",primerN); 
+localStorage.setItem("segundoN",segundoN);
+localStorage.setItem("primerA",primerA);
+localStorage.setItem("segundoA",segundoA);
+localStorage.setItem("tel",tel);
+
 }
 
-//dom
-document.addEventListener("DOMContentLoaded", function(e){
-  let emailUsuario = document.getElementById(email);
-  let usuario = localStorage.getItem("nombreUsuario")// dudoso
-  emailUsuario.innerHTML = usuario;
+//function de verificacion de formulario predeterminada de boostraps
+(function () {
+    'use strict'
 
-  // llamamos los datos guardados del localstorage
-  let pnombre = localStorage.getItem("primerNombre")
-  let snombre = localStorage.getItem("segundoNombre")
-  let papellido = localStorage.getItem("primerApellido")
-  let sapellido = localStorage.getItem("segundoApellido")
-  let telefono = localStorage.getItem("telefono")
+    var forms = document.querySelectorAll('.needs-validation')
   
-  //
-  primerNombre.value = pnombre
-  segundoNombre.value = snombre
-  primerApellido.value = papellido
-  segundoApellido.value = sapellido
-  telefono.value = telefono
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) { // si el formulario no esta validado no nos deja continuar ni guardar los datos.
+            event.preventDefault()
+            event.stopPropagation()
+          }
+          else{
+            guardarDatos(); //llamamos a la funcion de guardar datos cuando se verifican los datos del formulario exitosamente.
 
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+  //DOM
+  document.addEventListener("DOMContentLoaded", function(e){
+    let emailUser=document.getElementById("emailUsuario");
+    let usuario=localStorage.getItem("nombreDeUsuario");
+    emailUser.innerHTML=usuario;
+
+    //Llamamos los datos guardados del localstorage y los almacenamos en variables.
+    let pNombre=localStorage.getItem("primerN"); 
+    let sNombre=localStorage.getItem("segundoN");
+    let pApellido=localStorage.getItem("primerA");
+    let sApellido=localStorage.getItem("segundoA");
+    let telef=localStorage.getItem("tel");
+
+    //
+    primerNombre.value=pNombre;
+    segundoNombre.value=sNombre;
+    primerApellido.value=pApellido;
+    segundoApellido.value=sApellido;
+    telefono.value=telef;
+
+    //Esta funcion nos devuelve la imagen del localstorage
   let fotoPerfil=()=>{
-    return localStorage.getItem("foto")
+    return localStorage.getItem("foto");
+
+
   }
 
-  let mostrarFoto=()=>{
+  //El src de la foto recibe los datos de la imagen almacenados del localstorage desde la funcion fotoPerfil
+ let mostrarImg=()=>{
     if(fotoPerfil()){
-      imgPerfil.src=fotoPerfil();
+        imgFoto.src=fotoPerfil();
     }
-  }
-  mostrarFoto();
+ }
+ mostrarImg();
 
-});
-
-
-
-
-
-
-if(localStorage.getItem("nombreUsuario") != null){
-    let campoNombre = document.getElementById("usuarioId") //id de nav
-    let contenidoCampo = ""; 
-    let nombreUsuario = localStorage.getItem("nombreUsuario");
-    campoNombre.innerHTML = nombreUsuario;
-    
-  }
+  });
 
