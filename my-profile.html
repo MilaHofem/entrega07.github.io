@@ -59,11 +59,13 @@
     </div>
   </nav>
   <main>
-
     <div class="container">
-      <div class="card" style="width: 18rem; height:fit-content; margin-left: 40%;">
-        <img class="card-img-top" src="img/img_perfil.png" alt="UserPic" id="foto">
+      <br>
+      <h1>Perfil</h1>
+      <div class="card" style="width: 20rem; height:fit-content; margin-left: 50%;">
+        <img class="card-img-top" src="img/img_perfil.png" alt="UserPic" id="imgFoto">
         <div class="card-body">
+          <label type="text" class="form-control imgFormato " id="emailUsuario"></label>
           
         </div>
       </div>
@@ -71,97 +73,86 @@
         <br><br>
         <!-- Div para agregar la imagen -->
         <div class="container">
-          <div class="col-md-12 file-select" id="foto">
-            <br><br>
+          <div class="col-md-30 file-select"  id="foto">
+            <br>
+            <label for="imgPerfil" class="form-label estiloDeLetra" style="margin-left: 50%;"></label>
+            <!-- El input tipo file nos permite seleccionar una imagen desde nuestra computadora -->
+            <input type="file" class="form-control" id="imgPerfil" name="foto"
+              onchange="cargarFoto()">
+          </div>
+        </div>
+        <br>
+             <!--Formulario para los campos a rellenar con datos del usuario-->
+        <div class="col-md-6">
+          <br><br>
+          <label for="primerNombre" class="form-control">Primer Nombre</label>
+          <br>
+          <input type="text" class="form-control" id="primerNombre" required>
+          <div class="invalid-feedback">
+            Ingrese su nombre
+          </div>
+        </div>
+        <div class="col-md-6">
+          <br><br>
+          <label for="segundoNombre" class="form-control estiloDeLetra">Segundo Nombre</label>
+          <br>
+          <input type="text" class="form-control" id="segundoNombre">
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-6">
+          <br><br>
+          <label for="primerApellido" class="form-control">Primer Apellido</label>
+          <br>
+         
+            
+            <input type="text" class="form-control" id="primerApellido" aria-describedby="inputGroupPrepend" required>
+            <div class="invalid-feedback">
+              Ingrese su primer apellido.
+            </div>
+          
+        </div>
+        <div class="col-md-6">
+          <br><br>
+          <label for="segundoApellido" class="form-control">Segundo Apellido</label>
+          <br>
+          <input type="text" class="form-control" id="segundoApellido">
+          <div class="invalid-feedback">
             
           </div>
         </div>
+ 
+        <div class="col-md-4">
+          <br><br>
+          <label for="telefono" class="form-control estiloDeLetra">Telefono de contacto</label>
+          <input type="text" class="form-control" id="telefono" required>
+          <div class="invalid-feedback">
+            Por favor ingrese un número.
+          </div>
+        </div>
+
+        <div class="col-12 text-center">
+          <br>
+          <button class="btn btn-primary" type="submit">Guardar cambios</button>
+        </div>
+      </form>
+    </div>
   
-
-    <div class="container">
-        <br>
-        <h1>Perfil</h1>
-        <br>
-    <!-- formulario de validacion predeterminado de bootstrap con el cual rellenaremos los datos del usuario-->
-        <hr>
-        <form class="row g-3 needs-validation" novalidate>
-          <div class="col-md-6">
-            <label for="primernombre" class="form-label">Primer nombre*</label>
-            <br>
-            <input type="text" class="form-control" id="primernombre" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div>
-          <div class="col-md-6">
-            <label for="segundonombre" class="form-label">Segundo nombre</label>
-            <br>
-            <input type="text" class="form-control" id="segundonombre" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <label for="primerapellido" class="form-label">Primer apellido*</label>
-            <br>
-            <input type="text" class="form-control" id="primerapellido" value="" required>
-            <div class="valid-feedback">
-              Looks good!
-            </div>
-            <div class="col-md-6">
-              <label for="segundoapellido" class="form-label">Segundo apellido</label>
-              <br>
-              <input type="text" class="form-control" id="segundoapellido" value="" required>
-              <div class="valid-feedback">
-                Looks good!
-              </div>
-              <div class="col-md-6">
-                <label for="email" class="form-label">Email*</label>
-                <br>
-                <input type="text" class="form-control" id="email" value="" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
-              <br>
-              <div class="col-md-6">
-                <label for="telefonocontacto" class="form-label">Teléfono de contacto</label>
-                <input type="text" class="form-control" id="telefonocontacto" value="" required>
-                <div class="valid-feedback">
-
-              </div>
-              <label for="imgPerfil" class="form-label" style="margin-left: 47%;"></label>
-              <div class="col-md-6">Imagen de perfil
-                  <input type="file" class="" id="imgPerfil" name="foto"
-                  onchange="ponerFoto()">
-                </div>
-         <br>
-         <br>
-         <hr>
-          <div class="col-12">
-            <button class="btn btn-primary" type="submit">Guardar cambios</button>
-          </div>
-        </form>
-        <hr>
-
-
-        
-
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
-        2022</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
-</body>
-
-</html>
+    </main>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-end">
+          <a href="#">Volver arriba</a>
+        </p>
+        <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a> -
+          2022</p>
+        <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+      </div>
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/my-profile.js"></script>
+  </body>
+  
+  </html>
